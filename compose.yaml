@@ -5,19 +5,18 @@ services:
       dockerfile: DOCKERFILE.pypi
     container_name: pypiserver    
     ports:
-      - "8080:8080"  # PyPI server
+      - "8080:8080"
     networks:
       - pypi-network
 
-  nginx:
-    image: nginx:latest
-    container_name: nginx    
-    ports:
-      - "80:80"  # Expose Nginx on port 80
+  dev-client:
+    build:
+      context: .
+      dockerfile: DOCKERFILE.devenv
+    container_name: developer
+
     networks:
       - pypi-network
-    depends_on:
-      - pypi-server
 
 networks:
   pypi-network:

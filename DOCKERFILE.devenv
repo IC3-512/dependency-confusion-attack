@@ -1,15 +1,13 @@
-# Use Python official image for the development environment
 FROM python:3.9-slim
 
-# Install any necessary dependencies
 RUN apt-get update && apt-get install -y
-
+RUN pip install --upgrade pip
 # Set working directory
 WORKDIR /app
 
 # Copy the requirements.txt (which specifies using the local PyPI server)
 COPY requirements.txt /app/requirements.txt
-
+COPY app.py /app/
 # Copy the shell script that installs the requirements
 COPY install_requirements.sh /app/install_requirements.sh
 

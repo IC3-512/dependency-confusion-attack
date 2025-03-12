@@ -1,2 +1,8 @@
 .env
 dist
+# Ignore build artifacts
+dist/
+*.egg-info/
+__pycache__/
+*.pyc
+*.pyo

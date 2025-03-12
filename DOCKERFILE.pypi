@@ -1,0 +1,32 @@
+
+# https://pypi.org/project/pypiserver/
+
+
+# Use Python official image as the base image
+FROM python:3.9-slim
+
+# Install dependencies for PyPI server and Nginx
+RUN apt-get update && apt-get install -y \
+    curl \
+    nginx
+
+# Install pypiserver to serve the Python packages
+RUN pip install pypiserver
+
+# Create the directory for the PyPI repository
+RUN mkdir -p /srv/pypi/packages
+
+# Copy the package directory into the container
+COPY ./package/ /srv/pypi/packages/package_346234293
+
+# Expose necessary ports
+EXPOSE 8080 80
+
+# Add the Nginx configuration file for serving the repository
+COPY pypi_server.conf /etc/nginx/conf.d/pypi_server.conf
+
+# Install the Python package (if you want to install it into the container, you can run `pip install .`)
+WORKDIR /srv/pypi/packages
+
+# Start the PyPI server and Nginx server when the container runs
+CMD ["sh", "-c", "pypi-server run -p 8080 /srv/pypi && nginx -g 'daemon off;'"]

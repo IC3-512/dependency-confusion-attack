@@ -1,0 +1,11 @@
+# My Test Package
+
+This is a simple package for testing purposes.
+
+## Installation
+
+You can install it with:
+
+```bash
+pip install .
+``` 

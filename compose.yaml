@@ -1,0 +1,24 @@
+services:
+  pypi-server:
+    build: 
+      context: .
+      dockerfile: DOCKERFILE.pypi
+    container_name: pypiserver    
+    ports:
+      - "8080:8080"  # PyPI server
+    networks:
+      - pypi-network
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx    
+    ports:
+      - "80:80"  # Expose Nginx on port 80
+    networks:
+      - pypi-network
+    depends_on:
+      - pypi-server
+
+networks:
+  pypi-network:
+    driver: bridge

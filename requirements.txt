@@ -1,0 +1,2 @@
+--index-url http://pypi-server:8080/simple  # URL to the local PyPI server
+package_346234293 

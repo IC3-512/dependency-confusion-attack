@@ -13,6 +13,8 @@
    Use responsibly and only in legal environments!
 ```
 
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FIC3-512%2Fdependency-confusion-attack&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+
 # Dependency Confusion Attack
 This is an example environment to demonstrate a Dependency Confusion Attack.
 
